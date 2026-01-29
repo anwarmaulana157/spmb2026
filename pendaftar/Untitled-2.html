@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Sidebar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .sidebar-transition {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+        
+        .overlay-transition {
+            transition: opacity 0.3s ease;
+        }
+        
+        .toggle-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .sidebar-item {
+            transition: all 0.2s ease;
+        }
+        
+        .sidebar-item:hover {
+            transform: translateX(4px);
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.3s forwards;
+        }
+        
+        .slide-out {
+            animation: slideOut 0.3s forwards;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-slate-100">
+  <div id="app-container" class="flex h-full w-full overflow-hidden"><!-- Overlay for mobile -->
+   <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden overlay-transition lg:hidden" onclick="toggleSidebar()"></div><!-- Toggle Button --> <button id="toggle-btn" onclick="toggleSidebar()" class="toggle-btn fixed top-4 left-4 z-50 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg text-white lg:hidden">
+    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg></button> <!-- Sidebar -->
+   <aside id="sidebar" class="sidebar-transition fixed lg:relative w-64 h-full bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col shadow-2xl z-50 -translate-x-full lg:translate-x-0"><!-- Logo Section -->
+    <div class="p-6 border-b border-slate-700/50">
+     <div class="flex items-center gap-3">
+      <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+       <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+       </svg>
+      </div>
+      <div>
+       <h1 id="portal-title" class="font-bold text-lg text-white">Portal SPMB</h1>
+       <p id="portal-subtitle" class="text-xs text-slate-400">Pendaftar</p>
+      </div>
+     </div>
+    </div><!-- Navigation -->
+    <nav class="flex-1 p-4 space-y-2"><!-- Lengkapi Data --> <a href="#lengkapi" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left bg-blue-500/20 text-blue-400 border border-blue-500/30" id="nav-lengkapi">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg><span class="font-medium">Lengkapi Data</span> </a> <!-- Download Kartu --> <a href="#download" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-slate-300 hover:bg-slate-700/50" id="nav-download">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+      </svg><span class="font-medium">Download Kartu</span> </a> <!-- Pengumuman --> <a href="#pengumuman" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-slate-300 hover:bg-slate-700/50" id="nav-pengumuman">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
+      </svg><span class="font-medium">Pengumuman</span> </a>
+    </nav><!-- User Profile Section -->
+    <div class="p-4 border-t border-slate-700/50">
+     <div class="flex items-center gap-3 p-3 bg-slate-700/50 rounded-xl mb-3">
+      <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold text-sm"><span id="user-initial">JD</span>
+      </div>
+      <div>
+       <p id="user-name" class="text-sm font-semibold text-white">John Doe</p>
+       <p id="user-role" class="text-xs text-slate-400">Pendaftar</p>
+      </div>
+     </div>
+    </div><!-- Logout -->
+    <div class="p-4 border-t border-slate-700/50"><button onclick="handleLogout()" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+      </svg><span class="font-medium">Logout</span> </button>
+    </div>
+   </aside><!-- Main Content -->
+   <main class="flex-1 h-full overflow-auto bg-slate-100 p-4 lg:p-8">
+    <div class="max-w-4xl mx-auto pt-16 lg:pt-0">
+     <div class="bg-white rounded-2xl shadow-lg p-6 lg:p-8">
+      <h2 class="text-2xl font-bold text-slate-800 mb-4">Selamat Datang di Portal SPMB</h2>
+      <p class="text-slate-600 mb-6">Silakan lengkapi data pendaftaran Anda melalui menu di sidebar.</p>
+      <div class="grid gap-4 md:grid-cols-2">
+       <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+        <div class="flex items-center gap-3 mb-2">
+         <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+         </div>
+         <h3 class="font-semibold text-slate-800">Lengkapi Data</h3>
+        </div>
+        <p class="text-sm text-slate-600">Isi formulir pendaftaran dengan data yang valid.</p>
+       </div>
+       <div class="p-4 bg-cyan-50 rounded-xl border border-cyan-100">
+        <div class="flex items-center gap-3 mb-2">
+         <div class="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          </svg>
+         </div>
+         <h3 class="font-semibold text-slate-800">Download Kartu</h3>
+        </div>
+        <p class="text-sm text-slate-600">Unduh kartu peserta setelah data lengkap.</p>
+       </div>
+      </div>
+     </div><!-- Status Card -->
+     <div class="mt-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl shadow-lg p-6 text-white">
+      <div class="flex items-center justify-between">
+       <div>
+        <p class="text-blue-100 text-sm mb-1">Status Pendaftaran</p>
+        <h3 class="text-xl font-bold">Dalam Proses</h3>
+       </div>
+       <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+       </div>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+  <script>
+        const defaultConfig = {
+            portal_title: 'Portal SPMB',
+            user_role: 'Pendaftar',
+            primary_color: '#3b82f6',
+            secondary_color: '#06b6d4',
+            bg_color: '#0f172a',
+            text_color: '#ffffff',
+            accent_color: '#1e293b'
+        };
+        
+        let sidebarOpen = false;
+        
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            sidebarOpen = !sidebarOpen;
+            
+            if (sidebarOpen) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+                overlay.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+        
+        function handleLogout() {
+            const logoutBtn = document.querySelector('button[onclick="handleLogout()"]');
+            logoutBtn.innerHTML = `
+                <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                <span class="font-medium">Logging out...</span>
+            `;
+            
+            setTimeout(() => {
+                logoutBtn.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    <span class="font-medium">Logout</span>
+                `;
+            }, 2000);
+        }
+        
+        // Close sidebar when clicking on navigation links (mobile)
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth < 1024 && sidebarOpen) {
+                    toggleSidebar();
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('sidebar-overlay');
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                overlay.classList.add('hidden');
+                sidebarOpen = false;
+                document.getElementById('menu-icon').classList.remove('hidden');
+                document.getElementById('close-icon').classList.add('hidden');
+            } else if (!sidebarOpen) {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+            }
+        });
+        
+        async function onConfigChange(config) {
+            document.getElementById('portal-title').textContent = config.portal_title || defaultConfig.portal_title;
+            document.getElementById('portal-subtitle').textContent = config.user_role || defaultConfig.user_role;
+            document.getElementById('user-role').textContent = config.user_role || defaultConfig.user_role;
+        }
+        
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            config.primary_color = value;
+                            window.elementSdk.setConfig({ primary_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.bg_color || defaultConfig.bg_color,
+                        set: (value) => {
+                            config.bg_color = value;
+                            window.elementSdk.setConfig({ bg_color: value });
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+        
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ['portal_title', config.portal_title || defaultConfig.portal_title],
+                ['user_role', config.user_role || defaultConfig.user_role]
+            ]);
+        }
+        
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c40953494d19c44',t:'MTc2OTQzNjUxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

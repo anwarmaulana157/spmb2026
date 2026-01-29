@@ -114,7 +114,7 @@
             <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center shadow-sky-500/30">
               <img src="assets/img/logo.png">
             </div>
-            <div class="hidden sm:block">
+            <div class="block">
               <h1 id="school-name-header" class="text-lg md:text-xl font-bold text-white">SMK Informatika Sumedang</h1>
               <p class="text-xs text-sky-400">Profesional dan Religius</p>
             </div>
@@ -307,7 +307,7 @@
               <div class="flex items-center gap-4 mb-4">
 
                 <div class="w-16 h-16 flex items-center justify-center">
-                  <img src="assets/img/rpl.png">
+                  <img src="assets/img/dkv.png">
                 </div>
                 <div>
                   <h3 class="text-2xl font-bold">Desain Komunikasi Visual</h3>
@@ -432,8 +432,8 @@
             </div>
 
             <div class="relative flex items-start md:items-center md:flex-row-reverse gap-6">
-              <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 border border-blue-200 
-                      md:w-1/2 md:mr-auto">
+              <div class="bg-gradient-to-br from-sky-50 to-cyan-50  p-6 border border-sky-100 
+                      md:w-1/2 md:ml-auto">
                 <h3 class="text-lg font-bold text-slate-900 mb-2">2. Upload Berkas</h3>
                 <p class="text-slate-600 text-sm">
                   Unggah dokumen persyaratan sesuai format yang ditentukan.
@@ -442,7 +442,7 @@
             </div>
 
             <div class="relative flex items-start md:items-center gap-6">
-              <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 border border-blue-200 
+              <div class="bg-gradient-to-br from-sky-50 to-cyan-50  p-6 border border-sky-100 
                       md:w-1/2 md:ml-auto">
                 <h3 class="text-lg font-bold text-slate-900 mb-2">3. Verifikasi</h3>
                 <p class="text-slate-600 text-sm">
@@ -452,8 +452,8 @@
             </div>
 
             <div class="relative flex items-start md:items-center md:flex-row-reverse gap-6">
-              <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 border border-blue-200 
-                      md:w-1/2 md:mr-auto">
+              <div class="bg-gradient-to-br from-sky-50 to-cyan-50  p-6 border border-sky-100 
+                      md:w-1/2 md:ml-auto">
                 <h3 class="text-lg font-bold text-slate-900 mb-2">4. Seleksi</h3>
                 <p class="text-slate-600 text-sm">
                   Calon peserta mengikuti proses seleksi sesuai ketentuan.
@@ -462,11 +462,11 @@
             </div>
 
             <div class="relative flex items-start md:items-center gap-6">
-              <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 border border-blue-200 
+              <div class="bg-gradient-to-br from-sky-50 to-cyan-50  p-6 border border-sky-100 
                       md:w-1/2 md:ml-auto">
                 <h3 class="text-lg font-bold text-slate-900 mb-2">5. Pengumuman</h3>
                 <p class="text-slate-600 text-sm">
-                  Hasil seleksi diumumkan melalui website resmi.
+                  Hasil seleksi akan diumumkan melalui website resmi SPMB SMK Informatika Sumedang.
                 </p>
               </div>
             </div>

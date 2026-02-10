@@ -15,10 +15,6 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a. 0z"></path>
             </svg><span class="font-medium">Lengkapi Data</span> </a>
 
-        <a href="index.php?page=2" class="sidebar-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-slate-300 hover:bg-slate-700/50" id="nav-download">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-            </svg><span class="font-medium">Download Kartu</span> </a>
     </nav><!-- User Profile Section -->
     <div class="p-4 border-t border-slate-700/50">
         <div class="flex items-center gap-3 p-3 bg-slate-700/50 rounded-xl mb-3">

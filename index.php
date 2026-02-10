@@ -174,10 +174,10 @@
             Informasi Penerimaan
           </span>
           <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">
-            Kuota Penerimaan Peserta Didik
+            Kuota Penerimaan Murid Baru
           </h2>
           <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
-            Jumlah kuota penerimaan peserta didik baru SMK Informatika Sumedang
+            Jumlah kuota penerimaan murid baru SMK Informatika Sumedang
           </p>
         </div>
 
@@ -678,7 +678,7 @@
               </svg></button>
             <div class="faq-content hidden px-6 pb-5">
               <p class="text-slate-600">Pendaftaran dilakukan secara gratis tanpa biaya pendaftaran.
-                Calon peserta didik hanya dikenakan biaya seleksi sebesar Rp100.000.</p>
+                Calon murid baru hanya dikenakan biaya seleksi sebesar Rp100.000.</p>
             </div>
           </div><!-- FAQ 3 -->
           <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between hover:bg-slate-50 transition-colors"> <span class="font-semibold text-slate-900">Berapa kuota yang tersedia untuk setiap jurusan?</span>
@@ -686,7 +686,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg></button>
             <div class="faq-content hidden px-6 pb-5">
-              <p class="text-slate-600">Kuota penerimaan peserta didik baru SMK Informatika Sumedang terdiri dari 360 siswa untuk jurusan Rekayasa Perangkat Lunak (RPL), 108 siswa untuk Desain Komunikasi Visual (DKV), 36 siswa untuk Axioo Class Program, dan 36 siswa untuk Kelas Telkom.</p>
+              <p class="text-slate-600">Kuota penerimaan murid baru SMK Informatika Sumedang terdiri dari 360 siswa untuk jurusan Rekayasa Perangkat Lunak (RPL), 108 siswa untuk Desain Komunikasi Visual (DKV), 36 siswa untuk Axioo Class Program, dan 36 siswa untuk Kelas Telkom.</p>
             </div>
           </div><!-- FAQ 4 -->
           <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between hover:bg-slate-50 transition-colors"> <span class="font-semibold text-slate-900">Apakah ada program beasiswa?</span>
@@ -694,7 +694,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg></button>
             <div class="faq-content hidden px-6 pb-5">
-              <p class="text-slate-600">Program beasiswa SMK Informatika Sumedang diberikan kepada peserta didik yang diterima melalui jalur prestasi serta menunjukkan prestasi akademik dan/atau nonakademik yang membanggakan selama menempuh pendidikan di SMK Informatika Sumedang.</p>
+              <p class="text-slate-600">Program beasiswa SMK Informatika Sumedang diberikan kepada murid yang diterima melalui jalur prestasi serta menunjukkan prestasi akademik dan/atau nonakademik yang membanggakan selama menempuh pendidikan di SMK Informatika Sumedang.</p>
             </div>
           </div><!-- FAQ 5 -->
           <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between hover:bg-slate-50 transition-colors"> <span class="font-semibold text-slate-900">Apakah biaya pendidikan di SMK Informatika Sumedang terjangkau?</span>

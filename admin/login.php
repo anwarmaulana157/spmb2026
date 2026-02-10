@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPMB 2026/2027 - SMK Informatika Sumedang</title>
+    <title>Login Admin SPMB 2026/2027 - SMK Informatika Sumedang</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/_sdk/element_sdk.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -210,7 +210,7 @@
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 </head>
 
-<body class="h-full w-full"><!-- Preloader -->
+<body class="h-full screen w-full"><!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="loader"></div>
     </div><!-- Main Container -->
@@ -224,19 +224,19 @@
         <div class="glass-card rounded-3xl shadow-2xl p-8 w-full max-w-md relative z-10 fade-in" style="animation-delay: 0.2s;"><!-- Logo Section -->
             <div class="flex flex-col items-center mb-8">
                 <div class="w-20 h-20  flex items-center justify-center mb-4 ">
-                    <img src="assets/img/logo.png">
+                    <img src="../assets/img/logo.png">
                 </div>
                 <div class="text-center"><span id="badge-year" class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full mb-2">SPMB 2026/2027</span>
-                    <h1 id="page-title" class="text-2xl font-bold text-gray-800 mb-1">Login SPMB</h1>
+                    <h1 id="page-title" class="text-2xl font-bold text-gray-800 mb-1">Login Admin/Petugas SPMB</h1>
                     <p id="school-name" class="text-sm font-medium text-blue-600">SMK Informatika Sumedang</p>
                 </div>
             </div>
-            <p id="page-subtitle" class="text-center text-gray-500 text-sm mb-6">Masuk menggunakan NISN dan Password</p><!-- Login Form -->
+            <p id="page-subtitle" class="text-center text-gray-500 text-sm mb-6">Masuk menggunakan Usename dan Password</p><!-- Login Form -->
             <form id="login-form" class="space-y-5" method="POST" action="scr_login.php"><!-- NISN Field -->
                 <div class="space-y-2"><label for="nisn" class="block text-sm font-semibold text-gray-700"> <span class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
-                            </svg> NISN </span> </label> <input type="text" id="nisn" name="nisn" class="input-field w-full px-4 py-3 rounded-xl text-gray-700 placeholder-gray-400" placeholder="Masukkan NISN Anda" required>
+                            </svg> Username </span> </label> <input type="text" id="nisn" name="username" class="input-field w-full px-4 py-3 rounded-xl text-gray-700 placeholder-gray-400" placeholder="Masukkan NISN Anda" required>
                 </div><!-- Password Field -->
                 <div class="space-y-2"><label for="password" class="block text-sm font-semibold text-gray-700"> <span class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
@@ -259,15 +259,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                     </svg><span id="login-button-text">Login</span> </button> <!-- Divider -->
                 <div class="relative my-6">
-                    <div class="absolute inset-0 flex items-center">
-                        <div class="w-full border-t border-gray-200"></div>
-                    </div>
-                    <div class="relative flex justify-center text-sm"><span class="px-4 bg-white text-gray-500">Belum punya akun?</span>
-                    </div>
-                </div><!-- Register Button --> <a href="daftar" id="register-button" class="btn-outline-custom w-full py-3.5 font-semibold rounded-xl flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                    </svg><span id="register-button-text">Daftar Sekarang</span> </a>
+
+
+                </div>
             </form><!-- Footer -->
             <p class="text-center text-gray-400 text-xs mt-6">© 2026 SMK Informatika Sumedang. All rights reserved.</p>
         </div>
@@ -288,8 +282,8 @@
     <script>
         // Default configuration
         const defaultConfig = {
-            page_title: 'Login SPMB',
-            page_subtitle: 'Masuk menggunakan NISN dan Password',
+            page_title: 'Login Admin/Petugas SPMB',
+            page_subtitle: 'Masuk menggunakan Username dan Password',
             school_name: 'SMK Informatika Sumedang',
             year_text: '2026/2027',
             login_button_text: 'Login',

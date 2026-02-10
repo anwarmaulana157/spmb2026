@@ -1,4 +1,13 @@
-  <!-- Top Header -->
+<?php
+include "../config/koneksi.php";
+$pendaftaran_id = $_SESSION['pendaftaran_id'];
+$query = mysqli_query($conn,"SELECT * FROM tb_pendaftaran WHERE pendaftaran_id='$pendaftaran_id'");
+$row = mysqli_fetch_assoc($query);
+// INI YANG KURANG
+$isVerified = strtolower($row['status']) == 'verifikasi';
+?>
+<!-- Top Header -->
+
 
   <header class="bg-white shadow-sm border-b border-slate-200 px-6 py-4">
       <div class="flex items-center justify-between">
@@ -86,8 +95,17 @@
   <!-- Page Content -->
   <main class="flex-1 p-6 overflow-y-auto">
       <div id="page-lengkapi" class="page-content fade-in">
-          <div class="grid grid-cols-1 lg:grid-cols-4 gap-6"><!-- Form Section -->
+        
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            
+          <!-- Form Section -->
               <div class="lg:col-span-3">
+                <?php if ($isVerified): ?>
+                <!-- Pesan jika sudah diverifikasi -->
+                <div class="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm mb-4">
+                    Data sudah diverifikasi dan tidak dapat diubah.
+                </div>
+            <?php endif; ?>
                   <form id="form-lengkapi" class="space-y-6" action="dashboard/simpan.php"
                       method="POST"
                       enctype="multipart/form-data">
@@ -130,7 +148,8 @@
                               </div>
 
                           </div>
-                      </div><!-- Section 2: Data Pribadi -->
+                      </div>
+                      <!-- Section 2: Data Pribadi -->
                       <div class="card-form bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
                           <h3 class="text-base font-bold text-slate-800 mb-6 pb-4 border-b border-slate-200">Data Pribadi</h3>
                           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -190,7 +209,8 @@
                                   </select>
                               </div>
                           </div>
-                      </div><!-- Section 3: Asal Sekolah -->
+                      </div>
+                      <!-- Section 3: Asal Sekolah -->
                       <div class="card-form bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
                           <h3 class="text-base font-bold text-slate-800 mb-6 pb-4 border-b border-slate-200">Asal Sekolah</h3>
                           <?php
@@ -222,7 +242,8 @@
                                   class="input-field w-full px-4 py-3 rounded-xl text-gray-700 mt-3 hidden"
                                   placeholder="Masukkan nama sekolah asal" data-required="1" <?= $isLocked ? 'disabled' : '' ?>>
                           </div>
-                      </div><!-- Section 4: Data Ayah/Wali -->
+                      </div>
+                      <!-- Section 4: Data Ayah/Wali -->
                       <div class="card-form bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
                           <h3 class="text-base font-bold text-slate-800 mb-6 pb-4 border-b border-slate-200">Data Ayah/Wali</h3>
                           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -413,9 +434,32 @@
                                   <?php } ?>
                               </div>
                           </div>
-                      </div><!-- Action Buttons -->
-                      <div class="flex items-center gap-3"><button type="submit" name="status" value="draft" class="flex-1 px-4 py-2.5 border border-slate-200 text-slate-600 rounded-lg font-medium hover:bg-slate-50 transition-colors" <?= $isLocked ? 'disabled' : '' ?>>Simpan Sementara</button> <button type="submit" name="status" value="submit" class="flex-1 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-medium hover:shadow-lg transition-all" <?= $isLocked ? 'disabled' : '' ?>>Simpan &amp; Submit</button>
                       </div>
+
+                    
+
+                      <!-- Action Buttons -->
+                      <?php if ($isVerified): ?>
+                            <!-- Pesan jika sudah diverifikasi -->
+                            <div class="p-4 rounded-xl bg-green-50 border border-green-200 text-green-700 text-sm font-medium">
+                                Untuk kartu pendaftaran dapat diambil di Sekretariat SPMB SMK Informatika Sumedang.
+                            </div>
+                        <?php else: ?>
+                                                    
+                            <!-- Action Buttons -->
+                            <div class="flex items-center gap-3">
+                                <button type="submit" name="status" value="draft"
+                                    class="flex-1 px-4 py-2.5 border border-slate-200 text-slate-600 rounded-lg font-medium hover:bg-slate-50 transition-colors">
+                                    Simpan Sementara
+                                </button>
+
+                                <button type="submit" name="status" value="submit"
+                                    class="flex-1 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-medium hover:shadow-lg transition-all">
+                                    Simpan &amp; Submit
+                                </button>
+                            </div>
+                        <?php endif; ?>
+
                   </form>
               </div><!-- Info Sidebar -->
               <div class="lg:col-span-1"><!-- Progress -->

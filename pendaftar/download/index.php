@@ -8,7 +8,7 @@
               onclick="toggleSidebar()"></div>
 
           <!-- Left: Toggle + Title -->
-          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4">
 
               <!-- Toggle Sidebar Button (Mobile) -->
               <button id="toggle-btn"
@@ -19,7 +19,7 @@
                            text-black lg:hidden">
 
                   <!-- Menu Icon -->
-                  <svg id="menu-icon"
+                <svg id="menu-icon"
                       class="w-6 h-6"
                       fill="none"
                       stroke="currentColor"

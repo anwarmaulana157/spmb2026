@@ -10,31 +10,34 @@
     switch ($page) {
 
         case "1":
-            require("dashboard/index.php");
+            require("dashboard.php");
             break;
         case "2":
-            require("pendaftar/index.php");
+            require("pendaftaran.php");
             break;
         case "3":
-            require("sekolah/index.php");
+            require("sekolah.php");
             break;
         case "4":
-            require("jurusan/index.php");
+            require("jurusan.php");
             break;
         case "5":
-            require("tahun/index.php");
+            require("tahun.php");
             break;
         case "6":
-            require("verifikasi/index.php");
+            require("petugas.php");
             break;
         case "7":
-            require("rekap/index.php");
+            require("verifikasi.php");
             break;
         case "8":
-            require("cetak/index.php");
+            require("cetak.php");
             break;
         case "9":
-            require("petugas/index.php");
+            require("pendaftaran/input_data.php");
+            break;
+        case "10":
+            require("pendaftaran/edit_data.php");
             break;
     }
     ?>

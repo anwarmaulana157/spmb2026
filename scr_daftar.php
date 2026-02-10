@@ -17,7 +17,7 @@ if ($nisn == "" || $nik == "" || $nama == "" || $jalur == "" || $telp == "" || $
     exit;
 }
 
-$password = password_hash($pass, PASSWORD_DEFAULT);
+$password = $pass;
 
 // ================= ASAL SEKOLAH =================
 $sekolah_id = $_POST['asal_sekolah']; // ID sekolah atau 'lainnya'

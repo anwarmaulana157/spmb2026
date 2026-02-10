@@ -337,7 +337,8 @@
     <div class="preloader" id="preloader">
         <div class="loader"></div>
     </div><!-- Main Container -->
-    <div class="gradient-bg min-h-full w-full flex items-center justify-center p-4 relative overflow-auto"><!-- Floating Shapes Background -->
+    <div class="gradient-bg min-h-screen w-full flex items-center justify-center p-4 relative overflow-hidden">
+        <!-- Floating Shapes Background -->
         <div class="floating-shapes">
             <div class="shape shape-1"></div>
             <div class="shape shape-2"></div>

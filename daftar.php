@@ -354,6 +354,7 @@
                     <p id="school-name" class="text-sm font-medium text-blue-600">SMK Informatika Sumedang</p>
                 </div>
             </div>
+
             <!-- Registration Form -->
             <form action="scr_daftar.php" method="POST" class="space-y-5"><!-- NISN -->
                 <div class="space-y-2"><label for="nisn" class="block text-sm font-semibold text-gray-700"> <span class="flex items-center gap-2">
@@ -559,29 +560,7 @@
             closeModal: $('close-modal')
         };
 
-        /* =========================
-        STATE
-        ========================= */
-        let currentCaptcha = '';
-        let isSubmitting = false;
-
-        /* =========================
-        CAPTCHA
-        ========================= */
-        function generateCaptcha() {
-            if (!elements.captchaCode) return;
-            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-            currentCaptcha = '';
-            for (let i = 0; i < 6; i++) {
-                currentCaptcha += chars[Math.floor(Math.random() * chars.length)];
-            }
-            elements.captchaCode.textContent = currentCaptcha;
-        }
-
-        if (elements.refreshCaptcha) {
-            elements.refreshCaptcha.addEventListener('click', generateCaptcha);
-        }
-
+     
         /*=========================TOAST=========================*/
         function showToast(title, message, type = 'info') {
             if (!elements.toast) return;

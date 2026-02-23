@@ -37,9 +37,6 @@
 
           <li><a href="index.php?page=3" class="sidebar-item w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-left text-sm text-slate-300 hover:bg-slate-700/50" data-page="sekolah"> <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span> Sekolah Asal </a></li>
 
-          <li><a href="index.php?page=4" class="sidebar-item w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-left text-sm text-slate-300 hover:bg-slate-700/50" data-page="kompetensi"> <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span> Kompetensi Keahlian </a></li>
-
-          <li><a href="index.php?page=5" class="sidebar-item w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-left text-sm text-slate-300 hover:bg-slate-700/50" data-page="tahun"> <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span> Tahun Pelajaran </a></li>
           
        </ul></li>
        

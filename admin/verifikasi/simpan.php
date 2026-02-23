@@ -27,7 +27,13 @@ $query = mysqli_query($conn, "
 ");
 
 if ($query) {
+  //  trigger modal cetak
+  $_SESSION['show_cetak_modal'] = true;
+  $_SESSION['cetak_pendaftaran_id'] = $pendaftaran_id;
+
   header("Location: ../index.php?page=7");
+  exit;
 } else {
   header("Location: ../index.php?page=7");
+  exit;
 }

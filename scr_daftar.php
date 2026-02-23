@@ -17,7 +17,17 @@ if ($nisn == "" || $nik == "" || $nama == "" || $jalur == "" || $telp == "" || $
     exit;
 }
 
-$password = $pass;
+// Validasi minimal password
+if (strlen($pass) < 6) {
+    echo "<script>
+            alert('Password minimal 6 karakter!');
+            window.history.back();
+          </script>";
+    exit;
+}
+
+// HASH PASSWORD (AMAN)
+$password = password_hash($pass, PASSWORD_DEFAULT);
 
 // ================= ASAL SEKOLAH =================
 $sekolah_id = $_POST['asal_sekolah']; // ID sekolah atau 'lainnya'
@@ -137,3 +147,4 @@ if ($query) {
             window.history.back();
           </script>";
 }
+?>

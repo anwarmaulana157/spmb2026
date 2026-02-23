@@ -19,4 +19,5 @@
       <h1>Halaman Tahun Lulusan</h1>
       </div>
     </div>
+    <?php include "templates/footer.php"?>
    </main>

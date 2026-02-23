@@ -117,6 +117,34 @@ document.addEventListener("click", function (e) {
   openModal("modalEditPetugas");
 });
 
+// =====================================
+// Edit Sekolah Modal
+// =====================================
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".btn-edit");
+  if (!btn) return;
+
+  e.preventDefault();
+
+  const row = btn.closest("tr");
+  if (!row) return;
+
+  // ambil data dari tabel
+  document.getElementById("edit_npsn").value =
+    row.querySelector(".td-npsn")?.innerText ?? "";
+
+  document.getElementById("edit_namasekolah").value =
+    row.querySelector(".td-namasekolah")?.innerText ?? "";
+
+  document.getElementById("edit_alamat").value = row
+    .querySelector(".td-alamat")
+    ?.innerText.trim();
+
+  document.getElementById("edit_sekolah_id").value = btn.dataset.id ?? "";
+
+  openModal("modalEditSekolah");
+});
+
 function toggleSekolahLainnya() {
   const select = document.getElementById("asal_sekolah");
   const inputLainnya = document.getElementById("asal_sekolah_lainnya");

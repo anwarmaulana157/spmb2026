@@ -36,6 +36,34 @@
 
         <!-- Table -->
         <div class="p-6">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+
+  <!-- Search -->
+            <input id="searchInput" type="text"
+              placeholder="Cari NISN / Nama / Sekolah..."
+              class="w-full md:w-64 px-4 py-2 border border-slate-300 rounded-lg focus:ring focus:ring-sky-200">
+
+            <div class="flex gap-2">
+            <!-- Filter Jalur -->
+            <select id="filterJalur"
+              class="px-3 py-2 border border-slate-300 rounded-lg">
+              <option value="">Semua Jalur</option>
+              <option value="Prestasi">Prestasi</option>
+              <option value="Umum">Umum</option>
+            </select>
+
+            <!-- Filter Status -->
+            <select id="filterStatus"
+              class="px-3 py-2 border border-slate-300 rounded-lg">
+              <option value="">Semua Status</option>
+              <option value="draft">Draft</option>
+              <option value="submit">Submit</option>
+              <option value="verifikasi">Verifikasi</option>
+            </select>
+          </div>
+
+          </div>
+
           <div class="overflow-x-auto rounded-xl border border-slate-200
               scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-slate-100">
 
@@ -45,12 +73,13 @@
               <thead class="bg-slate-50 border-b border-slate-200">
                 <tr>
                   <th class="px-4 py-3 text-left font-semibold text-slate-700 border-r border-slate-200">No</th>
-                   <th class="px-4 py-3 text-left font-semibold text-slate-700 border-r border-slate-200">NISN</th>
+                  <th class="px-4 py-3 text-left font-semibold text-slate-700 border-r border-slate-200">NISN</th>
                   <th class="px-4 py-3 text-left font-semibold text-slate-700 border-r border-slate-200">Nama Lengkap</th>
                   <th class="px-4 py-3 text-left font-semibold text-slate-700 border-r border-slate-200">Gender</th>
                   <th class="px-4 py-3 text-left font-semibold text-slate-700 border-r border-slate-200">Jalur</th>
                   <th class="px-4 py-3 text-left font-semibold text-slate-700 border-r border-slate-200">Kompetensi Keahlian</th>
                   <th class="px-4 py-3 text-left font-semibold text-slate-700 border-r border-slate-200">Asal Sekolah</th>
+                  <th class="px-4 py-3 text-left font-semibold text-slate-700 border-r border-slate-200">Status</th>
                   <th class="px-4 py-3 text-center font-semibold text-slate-700 bg-slate-50 sticky right-0 z-20     border-l border-slate-200">
                   Aksi
                   </th>
@@ -66,12 +95,26 @@
               ?>
                 <tr class="hover:bg-slate-50 transition-colors">
                   <td class="px-4 py-3 border-r border-slate-100"><?php echo $no++;?></td>
-                  <td class="td-nama px-4 py-3 border-r border-slate-100"><?php echo $row['nisn']?></td>
-                  <td class="td-username px-4 py-3 border-r border-slate-100"><?php echo $row['nama_lengkap']?></td>
-                  <td class="td-role px-4 py-3 border-r border-slate-100"><?php echo $row['jenis_kelamin']?></td>
-                  <td class="td-status px-4 py-3 border-r border-slate-100"><?php echo $row['jalur']?></td>
-                  <td class="td-status px-4 py-3 border-r border-slate-100"><?php echo $row['nama_kompetensi']?></td>
-                  <td class="td-status px-4 py-3 border-r border-slate-100"><?php echo $row['nama_sekolah']?></td>
+                  <td class="td-nisn px-4 py-3 border-r border-slate-100"><?php echo $row['nisn']?></td>
+                  <td class="td-nama px-4 py-3 border-r border-slate-100"><?php echo $row['nama_lengkap']?></td>
+                  <td class="td-gender px-4 py-3 border-r border-slate-100"><?php echo $row['jenis_kelamin']?></td>
+                  <td class="td-jalur px-4 py-3 border-r border-slate-100"><?php echo $row['jalur']?></td>
+                  <td class="td-jurusan px-4 py-3 border-r border-slate-100"><?php echo $row['nama_kompetensi']?></td>
+                  <td class="td-sekolah px-4 py-3 border-r border-slate-100"><?php echo $row['nama_sekolah']?></td>
+                  <td class="td-status px-4 py-3 border-r border-slate-100">
+                    <?php
+                      $status = $row['status'];
+
+                      if ($status == "") {
+                          echo '<span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-600">Draft</span>';
+                      } elseif ($status == "submit") {
+                          echo '<span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-600">Submit</span>';
+                      } elseif ($status == "verifikasi") {
+                          echo '<span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-600">Verifikasi</span>';
+                      }
+                    ?>
+                  </td>
+
                   <td class="px-4 py-3 text-center bg-white sticky right-0 z-10 border-l border-slate-200">
                     <!-- Tombol Detail -->
                   <a href="index.php?page=10&id=<?php echo $row['pendaftaran_id']?>"
@@ -148,8 +191,12 @@
               <?php }?>
               </tbody>
             </table>
+           
+
           </div>
+           <div class="flex justify-center mt-6 gap-2" id="pagination"></div>
         </div>
       </div>
     </div>
+    <?php include "templates/footer.php"?>
    </main>

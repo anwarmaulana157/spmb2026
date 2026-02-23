@@ -250,9 +250,9 @@ if (!$data) {
       <!-- QR KIRI -->
       <div class="qr">
         <?php if (strtolower($data['jalur']) === 'prestasi'): ?>
-          <img src="../assets/img/qr1.png" alt="QR Code Jalur Prestasi">
+          <img src="../assets/img/spmb.jpeg" alt="QR Code Jalur Prestasi">
         <?php else: ?>
-          <img src="../assets/img/qr2.png" alt="QR Code Jalur Umum">
+          <img src="../assets/img/spmb.jpeg" alt="QR Code Jalur Umum">
         <?php endif; ?>
       </div>
 

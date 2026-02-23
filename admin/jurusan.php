@@ -19,4 +19,5 @@
       <h1>Halaman Kompetensi Keahlian</h1>
       </div>
     </div>
+    <?php include "templates/footer.php"?>
    </main>

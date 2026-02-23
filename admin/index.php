@@ -53,9 +53,11 @@ if (mysqli_num_rows($q) > 0) {
     <?php include "templates/sidebar.php";?>
     <!-- Main Content -->
     <?php include "load.php";?>
+    
     <!-- Modal -->
     <?php include "petugas/modal.php";?>
     <?php include "pendaftaran/modal.php";?>
+    <?php include "sekolah/modal.php";?>
   <script src="assets/js/app.js" defer></script>
   <script>
   
@@ -77,5 +79,93 @@ if (mysqli_num_rows($q) > 0) {
             input.value = prefix + "-" + padded;
         }
     </script>
+    
+<script>
+const searchInput = document.getElementById("searchInput");
+const filterJalur = document.getElementById("filterJalur");
+const filterStatus = document.getElementById("filterStatus");
+const pagination = document.getElementById("pagination");
+
+const rows = Array.from(document.querySelectorAll("#navTable tbody tr"));
+
+
+let currentPage = 1;
+const rowsPerPage = 2;
+
+// trigger
+searchInput.addEventListener("input", filterTable);
+filterJalur.addEventListener("change", filterTable);
+filterStatus.addEventListener("change", filterTable);
+
+function filterTable() {
+  const keyword = searchInput.value.toLowerCase().trim();
+  const jalur = filterJalur.value.toLowerCase();
+  const status = filterStatus.value.toLowerCase();
+
+  rows.forEach(row => {
+    const nisn = row.querySelector(".td-nisn").innerText.toLowerCase();
+    const nama = row.querySelector(".td-nama").innerText.toLowerCase();
+    const sekolah = row.querySelector(".td-sekolah").innerText.toLowerCase();
+    const rowJalur = row.querySelector(".td-jalur").innerText.toLowerCase();
+    const rowStatus = row.querySelector(".td-status").innerText.toLowerCase();
+
+    const matchSearch =
+      !keyword ||
+      nisn === keyword ||
+      nama.includes(keyword) ||
+      sekolah.includes(keyword);
+
+    const matchJalur = !jalur || rowJalur === jalur;
+    const matchStatus = !status || rowStatus === status;
+
+    // LANGSUNG dari data asli
+    row.classList.toggle("filtered", matchSearch && matchJalur && matchStatus);
+  });
+
+  currentPage = 1;
+  paginate();
+}
+
+
+function paginate() {
+  const filteredRows = rows.filter(row => row.classList.contains("filtered"));
+
+  rows.forEach(row => row.style.display = "none");
+
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
+
+  filteredRows.slice(start, end).forEach(row => {
+    row.style.display = "";
+  });
+
+  renderPagination(filteredRows.length);
+}
+
+function renderPagination(totalRows) {
+  pagination.innerHTML = "";
+  const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.innerText = i;
+    btn.className = `px-3 py-1 rounded border ${
+      i === currentPage ? "bg-sky-500 text-white" : "bg-white"
+    }`;
+
+    btn.onclick = () => {
+      currentPage = i;
+      paginate();
+    };
+
+    pagination.appendChild(btn);
+  }
+}
+
+// init
+rows.forEach(r => r.classList.add("filtered"));
+paginate();
+</script>
+
   </body>
 </html>
